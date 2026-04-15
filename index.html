@@ -3,52 +3,40 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Quupii — Tienda de Peluches</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <title>Quupii Hotel — Peluches Artesanales</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Rammetto+One&display=swap" rel="stylesheet">
   <style>
     /* ── Reset & base ─────────────────────────────── */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
     body {
-      font-family: 'Nunito', sans-serif;
-      background: #fff;
-      color: #333;
+      font-family: 'Rammetto One', cursive;
+      background: #f6b26b; /* Fondo principal naranja */
+      color: #fff;        /* Texto principal blanco */
     }
     a { text-decoration: none; color: inherit; }
-    img { display: block; max-width: 100%; }
 
     /* ── Variables ────────────────────────────────── */
     :root {
-      --pink:       #f72585;
-      --pink-light: #fce4ec;
-      --pink-pale:  #fff0f5;
-      --red:        #e63946;
-      --dark:       #2b2d42;
-      --gray:       #8d8d8d;
-      --border:     #f2d7e0;
-      --radius:     16px;
+      --orange:       #f6b26b;    /* Color base */
+      --white:        #ffffff;
+      --orange-dark:  #e69138;
+      --orange-deep:  #d0802d;
+      --dark-text:    #5a3e1a;
+      --border-light: rgba(255, 255, 255, 0.3);
+      --border-orange: #eecbad;
+      --radius:       16px;
     }
 
-    /* ── Top announcement bar ─────────────────────── */
-    .announcement {
-      background: var(--pink);
-      color: #fff;
-      text-align: center;
-      font-size: .85rem;
-      font-weight: 700;
-      padding: .55rem 1rem;
-      letter-spacing: .04em;
-    }
-
-    /* ── Header / Navbar ──────────────────────────── */
+    /* ── Header / Navbar (INVERTIDO) ──────────────── */
     header {
       position: sticky;
       top: 0;
       z-index: 100;
-      background: #fff;
-      border-bottom: 2px solid var(--border);
+      background: var(--white); /* Fondo Blanco */
+      border-bottom: 2px solid var(--border-orange);
     }
     .navbar {
       max-width: 1200px;
@@ -57,710 +45,228 @@
       align-items: center;
       justify-content: space-between;
       padding: .9rem 1.5rem;
-      gap: 1rem;
     }
-    .logo {
-      display: flex;
-      align-items: center;
-      gap: .5rem;
-      font-size: 1.7rem;
-      font-weight: 800;
-      color: var(--pink);
-      letter-spacing: -.02em;
-    }
-    .logo span.bear { font-size: 1.9rem; }
     nav {
       display: flex;
       gap: 1.8rem;
       font-weight: 700;
       font-size: .95rem;
-      color: var(--dark);
+      color: var(--orange); /* Enlaces Naranja */
     }
-    nav a:hover { color: var(--pink); }
-    .navbar-actions {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-    }
-    .btn-cart {
-      background: var(--pink);
-      color: #fff;
-      border: none;
-      border-radius: 30px;
-      padding: .5rem 1.3rem;
-      font-family: 'Nunito', sans-serif;
-      font-weight: 700;
-      font-size: .9rem;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      gap: .4rem;
-      transition: background .2s;
-    }
-    .btn-cart:hover { background: #c41e6e; }
+    nav a:hover { opacity: 0.7; }
 
-    /* ── Hero banner ──────────────────────────────── */
-    .hero {
-      background: linear-gradient(135deg, var(--pink-pale) 0%, #fce4ec 60%, #f8bbd0 100%);
-      padding: 5rem 1.5rem 4rem;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-    }
-    .hero::before {
-      content: "🐻 🐰 🐼 🦄 🐨 🐸 🐱 🐶";
-      position: absolute;
-      top: 1rem; left: 50%;
-      transform: translateX(-50%);
-      font-size: 1.4rem;
-      opacity: .25;
-      white-space: nowrap;
-      letter-spacing: 1.2rem;
-      pointer-events: none;
-    }
-    .hero-badge {
-      display: inline-block;
-      background: var(--pink);
-      color: #fff;
-      font-size: .78rem;
+    /* Botón del Header invertido respecto al header blanco */
+    header .btn-header {
+      background: var(--orange);
+      color: var(--white);
+      padding: .6rem 1.4rem;
+      font-size: .8rem;
+      border-radius: 30px;
       font-weight: 800;
-      letter-spacing: .1em;
-      text-transform: uppercase;
-      padding: .3rem .9rem;
-      border-radius: 20px;
-      margin-bottom: 1.2rem;
+      border: none;
+      cursor: pointer;
+    }
+
+    /* ── Hero (Lobby) ────────────────────────────── */
+    .hero {
+      background: #fce5cd;
+      padding: 6rem 1.5rem;
+      text-align: center;
+      border-bottom: 1px solid var(--border-light);
     }
     .hero h1 {
-      font-size: clamp(2.2rem, 6vw, 3.8rem);
+      font-size: clamp(2rem, 5vw, 3.5rem);
       font-weight: 800;
-      color: var(--dark);
-      line-height: 1.15;
+      color: #f6b26b;
       margin-bottom: 1rem;
     }
-    .hero h1 em {
-      font-style: normal;
-      color: var(--pink);
-    }
-    .hero p {
-      max-width: 520px;
-      margin: 0 auto 2rem;
-      font-size: 1.1rem;
-      color: #666;
-      line-height: 1.6;
-    }
-    .hero-cta {
-      display: inline-flex;
-      gap: 1rem;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
-    .btn-primary {
-      background: var(--pink);
-      color: #fff;
-      border: none;
-      border-radius: 30px;
-      padding: .85rem 2.2rem;
-      font-family: 'Nunito', sans-serif;
-      font-weight: 800;
-      font-size: 1rem;
-      cursor: pointer;
-      transition: background .2s, transform .15s;
-    }
-    .btn-primary:hover { background: #c41e6e; transform: translateY(-2px); }
-    .btn-outline {
-      background: transparent;
-      color: var(--pink);
-      border: 2px solid var(--pink);
-      border-radius: 30px;
-      padding: .8rem 2rem;
-      font-family: 'Nunito', sans-serif;
-      font-weight: 800;
-      font-size: 1rem;
-      cursor: pointer;
-      transition: background .2s, color .2s, transform .15s;
-    }
-    .btn-outline:hover {
-      background: var(--pink-light);
-      transform: translateY(-2px);
-    }
-    .hero-emojis {
-      margin-top: 3rem;
-      font-size: 4rem;
-      display: flex;
-      justify-content: center;
-      gap: 1.5rem;
-      flex-wrap: wrap;
-    }
-    .hero-emojis span {
-      display: inline-block;
-      animation: float 3s ease-in-out infinite;
-    }
-    .hero-emojis span:nth-child(2) { animation-delay: .4s; }
-    .hero-emojis span:nth-child(3) { animation-delay: .8s; }
-    .hero-emojis span:nth-child(4) { animation-delay: 1.2s; }
-    .hero-emojis span:nth-child(5) { animation-delay: 1.6s; }
-    @keyframes float {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-12px); }
-    }
+    .hero h1 em { color: var(--dark-text); font-style: normal; text-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+    .hero p { max-width: 600px; margin: 0 auto 2rem; color: #5a3e1a; font-size: 1.1rem; }
 
-    /* ── Section wrapper ──────────────────────────── */
+    /* ── Sections ─────────────────────────────────── */
     section { padding: 4rem 1.5rem; }
     .section-inner { max-width: 1200px; margin: 0 auto; }
-    .section-title {
-      text-align: center;
-      font-size: 1.85rem;
-      font-weight: 800;
-      color: var(--dark);
-      margin-bottom: .5rem;
-    }
-    .section-title span { color: var(--pink); }
-    .section-sub {
-      text-align: center;
-      color: var(--gray);
-      margin-bottom: 2.5rem;
-      font-size: 1rem;
-    }
+    .section-title { text-align: center; font-size: 2rem; font-weight: 800; margin-bottom: 2.5rem; color: var(--white); }
+    .section-title span { color: var(--dark-text); }
 
-    /* ── Categories ───────────────────────────────── */
-    .categories-grid {
+    /* ── Character Cards (Staff) ──────────────────── */
+    .staff-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
-      gap: 1.2rem;
-    }
-    .category-card {
-      background: var(--pink-pale);
-      border: 2px solid var(--border);
-      border-radius: var(--radius);
-      padding: 1.6rem 1rem;
-      text-align: center;
-      cursor: pointer;
-      transition: transform .2s, box-shadow .2s, background .2s;
-    }
-    .category-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 8px 24px rgba(247,37,133,.15);
-      background: var(--pink-light);
-    }
-    .category-card .icon { font-size: 2.4rem; margin-bottom: .6rem; }
-    .category-card p { font-weight: 700; font-size: .9rem; color: var(--dark); }
-
-    /* ── Products grid ────────────────────────────── */
-    .products-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-      gap: 1.6rem;
-    }
-    .product-card {
-      background: #fff;
-      border: 2px solid var(--border);
-      border-radius: var(--radius);
-      overflow: hidden;
-      transition: transform .2s, box-shadow .2s;
-      position: relative;
-    }
-    .product-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 12px 32px rgba(247,37,133,.15);
-    }
-    .product-badge {
-      position: absolute;
-      top: .8rem; left: .8rem;
-      background: var(--pink);
-      color: #fff;
-      font-size: .7rem;
-      font-weight: 800;
-      letter-spacing: .05em;
-      text-transform: uppercase;
-      padding: .2rem .65rem;
-      border-radius: 20px;
-    }
-    .product-badge.new { background: #06d6a0; }
-    .product-badge.sale { background: var(--red); }
-    .product-img {
-      background: var(--pink-pale);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      height: 190px;
-      font-size: 5.5rem;
-      user-select: none;
-    }
-    .product-info { padding: 1rem 1.1rem 1.2rem; }
-    .product-name {
-      font-weight: 700;
-      font-size: .95rem;
-      color: var(--dark);
-      margin-bottom: .25rem;
-    }
-    .product-desc {
-      font-size: .82rem;
-      color: var(--gray);
-      margin-bottom: .7rem;
-      line-height: 1.4;
-    }
-    .product-footer {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-    .product-price {
-      font-size: 1.15rem;
-      font-weight: 800;
-      color: var(--pink);
-    }
-    .product-price s {
-      font-size: .8rem;
-      font-weight: 600;
-      color: var(--gray);
-      margin-left: .3rem;
-    }
-    .btn-add {
-      background: var(--pink-pale);
-      border: 2px solid var(--border);
-      border-radius: 20px;
-      padding: .35rem .9rem;
-      font-family: 'Nunito', sans-serif;
-      font-weight: 700;
-      font-size: .82rem;
-      color: var(--pink);
-      cursor: pointer;
-      transition: background .2s, color .2s;
-    }
-    .btn-add:hover { background: var(--pink); color: #fff; border-color: var(--pink); }
-
-    /* ── Promo banner ─────────────────────────────── */
-    .promo {
-      background: linear-gradient(120deg, var(--pink) 0%, #ff6eb4 100%);
-      color: #fff;
-      border-radius: var(--radius);
-      padding: 3.5rem 2rem;
-      text-align: center;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-    .promo h2 {
-      font-size: 2rem;
-      font-weight: 800;
-      margin-bottom: .6rem;
-    }
-    .promo p {
-      font-size: 1.05rem;
-      opacity: .9;
-      margin-bottom: 1.8rem;
-    }
-    .btn-white {
-      background: #fff;
-      color: var(--pink);
-      border: none;
-      border-radius: 30px;
-      padding: .85rem 2.2rem;
-      font-family: 'Nunito', sans-serif;
-      font-weight: 800;
-      font-size: 1rem;
-      cursor: pointer;
-      transition: box-shadow .2s, transform .15s;
-    }
-    .btn-white:hover { box-shadow: 0 6px 20px rgba(0,0,0,.2); transform: translateY(-2px); }
-
-    /* ── Newsletter ───────────────────────────────── */
-    .newsletter { background: var(--pink-pale); }
-    .newsletter-inner {
-      max-width: 540px;
-      margin: 0 auto;
-      text-align: center;
-    }
-    .newsletter h2 { font-size: 1.6rem; font-weight: 800; color: var(--dark); margin-bottom: .5rem; }
-    .newsletter p { color: var(--gray); font-size: .95rem; margin-bottom: 1.5rem; }
-    .newsletter-form {
-      display: flex;
-      gap: .7rem;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
-    .newsletter-form input {
-      flex: 1 1 220px;
-      border: 2px solid var(--border);
-      border-radius: 30px;
-      padding: .7rem 1.2rem;
-      font-family: 'Nunito', sans-serif;
-      font-size: .95rem;
-      outline: none;
-      transition: border-color .2s;
-    }
-    .newsletter-form input:focus { border-color: var(--pink); }
-
-    /* ── Footer ───────────────────────────────────── */
-    footer {
-      background: var(--dark);
-      color: #ccc;
-      padding: 3rem 1.5rem 2rem;
-    }
-    .footer-inner {
-      max-width: 1200px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
       gap: 2rem;
-      padding-bottom: 2rem;
-      border-bottom: 1px solid #444;
     }
-    .footer-brand .logo { color: #fff; margin-bottom: .8rem; }
-    .footer-brand p { font-size: .88rem; line-height: 1.6; }
-    .footer-col h4 { color: #fff; font-size: .95rem; font-weight: 700; margin-bottom: .9rem; }
-    .footer-col ul { list-style: none; }
-    .footer-col ul li { margin-bottom: .5rem; font-size: .88rem; }
-    .footer-col ul li a:hover { color: var(--pink); }
-    .footer-bottom {
-      max-width: 1200px;
-      margin: 1.5rem auto 0;
-      display: flex;
-      flex-wrap: wrap;
-      gap: .5rem;
-      justify-content: space-between;
-      align-items: center;
-      font-size: .82rem;
+    .staff-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 2rem;
+      text-align: center;
+      transition: transform .2s;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.1);
     }
-    .socials { display: flex; gap: .9rem; font-size: 1.3rem; }
-    .socials a:hover { color: var(--pink); }
+    .staff-card:hover { transform: translateY(-5px); }
+    .staff-emoji { font-size: 4rem; margin-bottom: 1rem; }
+    .staff-name { font-weight: 800; font-size: 1.3rem; color: var(--orange); }
+    .staff-role { color: #888; font-weight: 700; font-size: .85rem; text-transform: uppercase; margin-bottom: .8rem; opacity: 0.6; }
+    .staff-desc { font-size: .95rem; color: var(--dark-text); line-height: 1.5; }
 
-    /* ── Responsive tweaks ────────────────────────── */
-    @media (max-width: 640px) {
-      nav { display: none; }
-      .hero { padding: 3.5rem 1rem 3rem; }
-      .hero-emojis { font-size: 2.8rem; gap: .8rem; }
+    /* ── Season Sets ──────────────────────────────── */
+    .season-row {
+      display: flex;
+      gap: 1rem;
+      overflow-x: auto;
+      padding: 1rem 0;
     }
+    .season-badge {
+      flex: 0 0 auto;
+      background: rgba(255, 255, 255, 0.2);
+      padding: .8rem 1.5rem;
+      border-radius: 30px;
+      font-weight: 700;
+      border: 2px solid var(--white);
+      color: var(--white);
+    }
+
+    /* ── App Promo ────────────────────────────────── */
+    .app-section {
+      background: var(--white);
+      color: var(--orange);
+      border-radius: var(--radius);
+      padding: 3.5rem;
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 2rem;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    }
+    .app-content { flex: 1; min-width: 300px; }
+    .app-img { font-size: 8rem; flex: 0; filter: drop-shadow(0 5px 15px rgba(0,0,0,0.1)); }
+
+    /* ── Buttons ──────────────────────────────────── */
+    .btn-main {
+      background: var(--white);
+      color: var(--orange);
+      padding: .8rem 2.2rem;
+      border-radius: 30px;
+      font-weight: 800;
+      border: none;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    .btn-main:hover { background: #fdfdfd; transform: scale(1.02); }
+
+    footer { background: var(--orange-dark); padding: 4rem 1.5rem; border-top: 1px solid var(--border-light); color: var(--white); }
   </style>
 </head>
 <body>
-
-  <!-- Announcement bar -->
-  <div class="announcement">
-    🎁 ¡Envío gratis en pedidos superiores a 25 € · Nuevas colecciones cada mes! 🎀
-  </div>
-
-  <!-- Header -->
   <header>
     <div class="navbar">
-      <div class="logo">
-        <span class="bear">🐾</span>
-        Quupii
-      </div>
       <nav>
-        <a href="#categorias">Categorías</a>
-        <a href="#novedades">Novedades</a>
-        <a href="#ofertas">Ofertas</a>
-        <a href="#sobre-nosotros">Nosotros</a>
+        <a href="#staff">Nuestro Staff</a>
+        <a href="#temporadas">Temporadas</a>
+        <a href="#preventa">Preventas</a>
+        <a href="#app">La App</a>
       </nav>
-      <div class="navbar-actions">
-        <button class="btn-cart">🛒 Carrito <strong>(0)</strong></button>
-      </div>
+      <button class="btn-header">Hacer Reserva</button>
     </div>
   </header>
 
-  <!-- Hero -->
   <section class="hero">
-    <div class="hero-badge">✨ Nueva Colección Primavera 2025</div>
-    <h1>Tu mundo de<br /><em>peluches adorables</em></h1>
-    <p>Descubre cientos de compañeros de peluche kawaii, perfectos para regalar o para darte un capricho.</p>
-    <div class="hero-cta">
-      <button class="btn-primary">Ver colección 🧸</button>
-      <button class="btn-outline">Ver ofertas 🏷️</button>
-    </div>
-    <div class="hero-emojis">
-      <span>🐻</span>
-      <span>🐰</span>
-      <span>🐼</span>
-      <span>🦄</span>
-      <span>🐨</span>
+    <h1>Quupii Hotel</h1>
+    <p>Somos un equipo de artesanos informáticos creando un universo de compañía y suavidad artesanal. Reserva tu compañero ideal en nuestro lobby digital.</p>
+    <div style="display:flex; justify-content:center; gap:1rem; flex-wrap:wrap;">
+      <button class="btn-main">Ver Huéspedes 🐾</button>
+      <button class="btn-main" style="background:transparent; border:2px solid var(--white); color:var(--white);">Plan de Preventa</button>
     </div>
   </section>
 
-  <!-- Categories -->
-  <section id="categorias" style="background:#fff;">
+  <section id="staff">
     <div class="section-inner">
-      <h2 class="section-title">Explora por <span>categoría</span></h2>
-      <p class="section-sub">Desde clásicos atemporales hasta las últimas tendencias kawaii</p>
-      <div class="categories-grid">
-        <div class="category-card"><div class="icon">🐻</div><p>Osos</p></div>
-        <div class="category-card"><div class="icon">🐰</div><p>Conejos</p></div>
-        <div class="category-card"><div class="icon">🐼</div><p>Pandas</p></div>
-        <div class="category-card"><div class="icon">🦄</div><p>Unicornios</p></div>
-        <div class="category-card"><div class="icon">🐱</div><p>Gatos</p></div>
-        <div class="category-card"><div class="icon">🐶</div><p>Perros</p></div>
-        <div class="category-card"><div class="icon">🦊</div><p>Zorros</p></div>
-        <div class="category-card"><div class="icon">🐸</div><p>Ranas</p></div>
-        <div class="category-card"><div class="icon">🐨</div><p>Koalas</p></div>
-        <div class="category-card"><div class="icon">🦕</div><p>Dinos</p></div>
+      <h2 class="section-title">Nuestro <span>Staff del Hotel</span></h2>
+      <div class="staff-grid">
+        <div class="staff-card">
+          <div class="staff-emoji">🐧</div>
+          <div class="staff-role">El responsable manager del hotel</div>
+          <div class="staff-name">Guntii</div>
+          <p class="staff-desc">Trabajador, formal, educado y metódico, pero se le gana fácilmente invitándole a ver una comedia romántica</p>
+        </div>
+        <div class="staff-card">
+          <div class="staff-emoji">🦝</div>
+          <div class="staff-role">El esquivo conserje</div>
+          <div class="staff-name">Chaplii</div>
+          <p class="staff-desc">Vale tanto para un roto como para un descosido. Si no estará en su habitación, viendo películas en blanco y negro.</p>
+        </div>
+        <div class="staff-card">
+          <div class="staff-emoji">🦇</div>
+          <div class="staff-role">El refinado chef</div>
+          <div class="staff-name">Jeffi</div>
+          <p class="staff-desc">Se mueve entre ollas y fogones como quien se mueve por el salón de su casa, menos cuando no lleva sus gafas. </p>
+        </div>
+        <div class="staff-card">
+          <div class="staff-emoji">🦥</div>
+          <div class="staff-role">El relajado botones</div>
+          <div class="staff-name">Jimbii</div>
+          <p class="staff-desc">Guntii al principio se preocupó por su lento ritmo de trabajo, pero lo que le falta de rápido le sobra de trabajador.</p>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- New arrivals -->
-  <section id="novedades" style="background:var(--pink-pale);">
+  <section id="temporadas">
     <div class="section-inner">
-      <h2 class="section-title">✨ <span>Novedades</span></h2>
-      <p class="section-sub">Los peluches más recientes que acaban de llegar</p>
-      <div class="products-grid">
+      <h2 class="section-title">Próximos <span>Check-ins Temporales</span>
+        <p style="text-align:center; font-size:.9rem; opacity:.8;">Sets limitados con accesorios exclusivos de preventa.</p>
+      </h2>
+      <div class="season-row">
+        <div class="season-badge">🏳️‍🌈 Orgullo</div>
+        <div class="season-badge">🏖️ Verano</div>
+        <div class="season-badge">✏️ Vuelta al cole</div>
+        <div class="season-badge">🥘 Día de España</div>
+        <div class="season-badge">🎃 Halloween</div>
+        <div class="season-badge">🎄 Navidad</div>
+      </div>
+      <div style="text-align:center; font-size:1.5rem;">Y más...</div>
+    </div>
+  </section>
 
-        <div class="product-card">
-          <span class="product-badge new">Nuevo</span>
-          <div class="product-img">🐻‍❄️</div>
-          <div class="product-info">
-            <p class="product-name">Oso Polar Snowy</p>
-            <p class="product-desc">Peluche suave tamaño mediano, edición limitada invierno.</p>
-            <div class="product-footer">
-              <span class="product-price">14,99 €</span>
-              <button class="btn-add">+ Añadir</button>
-            </div>
-          </div>
+  <section id="app">
+    <div class="section-inner">
+      <div class="app-section">
+        <div class="app-img">📱</div>
+        <div class="app-content">
+          <h2 style="font-size:2.2rem; margin-bottom:1rem; font-weight:800;">Lleva el hotel en tu bolsillo</h2>
+          <p style="margin-bottom:2rem; line-height:1.6; font-size:1.1rem;">
+            Nuestra App estilo <strong>Tamagotchi</strong> te permite cuidar a tus huéspedes digitalmente y acceder a la tienda de preventas sin anuncios.
+          </p>
+          <button class="btn-main" style="background:var(--orange); color:var(--white);">Ver adelanto de la App</button>
         </div>
-
-        <div class="product-card">
-          <span class="product-badge new">Nuevo</span>
-          <div class="product-img">🦄</div>
-          <div class="product-info">
-            <p class="product-name">Unicornio Glitter</p>
-            <p class="product-desc">Con crin de colores y cuerno dorado brillante.</p>
-            <div class="product-footer">
-              <span class="product-price">17,99 €</span>
-              <button class="btn-add">+ Añadir</button>
-            </div>
-          </div>
-        </div>
-
-        <div class="product-card">
-          <div class="product-img">🐼</div>
-          <div class="product-info">
-            <p class="product-name">Panda Boba</p>
-            <p class="product-desc">Tamaño jumbo, ultra esponjoso y con ojos brillantes.</p>
-            <div class="product-footer">
-              <span class="product-price">22,99 €</span>
-              <button class="btn-add">+ Añadir</button>
-            </div>
-          </div>
-        </div>
-
-        <div class="product-card">
-          <span class="product-badge new">Nuevo</span>
-          <div class="product-img">🐸</div>
-          <div class="product-info">
-            <p class="product-name">Rana Matcha</p>
-            <p class="product-desc">Pequeño y adorable, perfecto para llevar en la mochila.</p>
-            <div class="product-footer">
-              <span class="product-price">9,99 €</span>
-              <button class="btn-add">+ Añadir</button>
-            </div>
-          </div>
-        </div>
-
       </div>
     </div>
   </section>
 
-  <!-- Best sellers / Deals -->
-  <section id="ofertas" style="background:#fff;">
-    <div class="section-inner">
-      <h2 class="section-title">🔥 <span>Más vendidos</span> &amp; Ofertas</h2>
-      <p class="section-sub">Los favoritos de nuestra comunidad, ahora con descuento</p>
-      <div class="products-grid">
-
-        <div class="product-card">
-          <span class="product-badge sale">-20%</span>
-          <div class="product-img">🐰</div>
-          <div class="product-info">
-            <p class="product-name">Conejito Latte</p>
-            <p class="product-desc">Orejas largas y piel suave de peluche premium.</p>
-            <div class="product-footer">
-              <span class="product-price">11,99 € <s>14,99 €</s></span>
-              <button class="btn-add">+ Añadir</button>
-            </div>
-          </div>
-        </div>
-
-        <div class="product-card">
-          <span class="product-badge sale">-30%</span>
-          <div class="product-img">🐶</div>
-          <div class="product-info">
-            <p class="product-name">Perrito Shiba</p>
-            <p class="product-desc">Inspirado en el popular Shiba Inu de internet.</p>
-            <div class="product-footer">
-              <span class="product-price">12,59 € <s>17,99 €</s></span>
-              <button class="btn-add">+ Añadir</button>
-            </div>
-          </div>
-        </div>
-
-        <div class="product-card">
-          <span class="product-badge sale">-15%</span>
-          <div class="product-img">🐱</div>
-          <div class="product-info">
-            <p class="product-name">Gatito Mochi</p>
-            <p class="product-desc">Forma redondeada tipo mochi, super suave al tacto.</p>
-            <div class="product-footer">
-              <span class="product-price">8,49 € <s>9,99 €</s></span>
-              <button class="btn-add">+ Añadir</button>
-            </div>
-          </div>
-        </div>
-
-        <div class="product-card">
-          <span class="product-badge sale">-25%</span>
-          <div class="product-img">🦊</div>
-          <div class="product-info">
-            <p class="product-name">Zorro Autumn</p>
-            <p class="product-desc">Colores otoñales, edición especial otoño-invierno.</p>
-            <div class="product-footer">
-              <span class="product-price">13,49 € <s>17,99 €</s></span>
-              <button class="btn-add">+ Añadir</button>
-            </div>
-          </div>
-        </div>
-
-        <div class="product-card">
-          <div class="product-img">🐨</div>
-          <div class="product-info">
-            <p class="product-name">Koala Dreamy</p>
-            <p class="product-desc">Con nariz de terciopelo y orejitas suaves.</p>
-            <div class="product-footer">
-              <span class="product-price">15,99 €</span>
-              <button class="btn-add">+ Añadir</button>
-            </div>
-          </div>
-        </div>
-
-        <div class="product-card">
-          <span class="product-badge sale">-10%</span>
-          <div class="product-img">🦕</div>
-          <div class="product-info">
-            <p class="product-name">Dino Pastel</p>
-            <p class="product-desc">Dinosaurio kawaii en tonos pastel suaves.</p>
-            <div class="product-footer">
-              <span class="product-price">10,79 € <s>11,99 €</s></span>
-              <button class="btn-add">+ Añadir</button>
-            </div>
-          </div>
-        </div>
-
-        <div class="product-card">
-          <div class="product-img">🐻</div>
-          <div class="product-info">
-            <p class="product-name">Osito Clásico</p>
-            <p class="product-desc">El favorito de siempre, en tres tamaños disponibles.</p>
-            <div class="product-footer">
-              <span class="product-price">desde 7,99 €</span>
-              <button class="btn-add">+ Añadir</button>
-            </div>
-          </div>
-        </div>
-
-        <div class="product-card">
-          <span class="product-badge new">Nuevo</span>
-          <div class="product-img">🦦</div>
-          <div class="product-info">
-            <p class="product-name">Nutria Sleepy</p>
-            <p class="product-desc">La nutria más adorable del mercado, siempre dormida.</p>
-            <div class="product-footer">
-              <span class="product-price">16,99 €</span>
-              <button class="btn-add">+ Añadir</button>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- Promo banner -->
-  <section style="padding: 3rem 1.5rem;">
-    <div class="promo">
-      <h2>🎁 ¿Buscas el regalo perfecto?</h2>
-      <p>Envuelve cualquier peluche con nuestro servicio de regalo premium.<br/>
-         Caja decorada + tarjeta personalizada por solo 2,99 € extra.</p>
-      <button class="btn-white">¡Lo quiero! 🎀</button>
-    </div>
-  </section>
-
-  <!-- About -->
-  <section id="sobre-nosotros" style="background:var(--pink-pale);">
-    <div class="section-inner" style="max-width:760px;text-align:center;">
-      <h2 class="section-title">¿Quiénes somos?</h2>
-      <p style="color:#555;line-height:1.8;font-size:1.05rem;margin-top:.5rem;">
-        <strong>Quupii</strong> nació con una idea simple: llevar alegría en forma de peluche.
-        Somos una tienda de peluches kawaii inspirada en la estética minimalista y adorable
-        que nos encanta. Cada producto pasa un control de calidad para garantizar que sea
-        suave, seguro y, sobre todo, <em>irresistiblemente abrazable</em>. 🐾
+  <section id="nosotros">
+    <div class="section-inner" style="max-width:800px; text-align:center;">
+      <h2 class="section-title">Hecho a mano, <span>con cariño y amor</span></h2>
+      <p style="line-height:1.8; color:#fff;">
+        Quupii Hotel nació de un equipo de 4 informáticos apasionados por la costura artesanal. 
+        Creemos en la producción bajo estándares de <strong>comercio justo</strong> y materiales sostenibles. 
+        Cada peluche es único, diseñado para saltar de la mesa de dibujo a tus brazos.
       </p>
-      <div style="display:flex;justify-content:center;gap:2.5rem;margin-top:2.5rem;flex-wrap:wrap;">
-        <div>
-          <p style="font-size:2rem;font-weight:800;color:var(--pink);">+200</p>
-          <p style="color:var(--gray);font-size:.9rem;">Productos únicos</p>
-        </div>
-        <div>
-          <p style="font-size:2rem;font-weight:800;color:var(--pink);">+5 000</p>
-          <p style="color:var(--gray);font-size:.9rem;">Clientes felices</p>
-        </div>
-        <div>
-          <p style="font-size:2rem;font-weight:800;color:var(--pink);">4.9 ⭐</p>
-          <p style="color:var(--gray);font-size:.9rem;">Valoración media</p>
-        </div>
-      </div>
     </div>
   </section>
 
-  <!-- Newsletter -->
-  <section class="newsletter">
-    <div class="newsletter-inner">
-      <h2>💌 ¡Únete al club Quupii!</h2>
-      <p>Recibe en tu correo novedades, ofertas exclusivas y sorpresas peludas.</p>
-      <div class="newsletter-form">
-        <input type="email" placeholder="tu@correo.com" />
-        <button class="btn-primary">Suscribirme</button>
-      </div>
-    </div>
-  </section>
-
-  <!-- Footer -->
   <footer>
-    <div class="footer-inner">
-      <div class="footer-brand">
-        <div class="logo"><span class="bear">🐾</span> Quupii</div>
-        <p>Tu tienda favorita de peluches kawaii. Hechos para abrazar, hechos para querer.</p>
+    <div class="section-inner" style="display:flex; justify-content:space-between; flex-wrap:wrap; gap:3rem;">
+      <div style="flex:1; min-width:250px;">
+        <div class="logo" style="margin-bottom:1.5rem;">Quupii Hotel</div>
+        <p style="font-size:.9rem; line-height:1.6;">
+          Peluches con identidad propia y producción bajo estándares de comercio justo.
+        </p>
       </div>
-      <div class="footer-col">
-        <h4>Tienda</h4>
-        <ul>
-          <li><a href="#novedades">Novedades</a></li>
-          <li><a href="#ofertas">Ofertas</a></li>
-          <li><a href="#categorias">Categorías</a></li>
-          <li><a href="#">Ediciones limitadas</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h4>Ayuda</h4>
-        <ul>
-          <li><a href="#">Envíos y devoluciones</a></li>
-          <li><a href="#">Preguntas frecuentes</a></li>
-          <li><a href="#">Contacto</a></li>
-          <li><a href="#">Política de privacidad</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h4>Síguenos</h4>
-        <ul>
-          <li><a href="#">📸 Instagram</a></li>
-          <li><a href="#">🎵 TikTok</a></li>
-          <li><a href="#">🐦 Twitter / X</a></li>
-          <li><a href="#">▶️ YouTube</a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <span>© 2025 Quupii · Proyecto académico — Negocio Digital, UCM</span>
-      <div class="socials">
-        <a href="#" title="Instagram">📸</a>
-        <a href="#" title="TikTok">🎵</a>
-        <a href="#" title="Twitter">🐦</a>
+      <div style="font-size:.9rem;">
+        <h4 style="margin-bottom:1rem; font-weight:800; text-transform:uppercase; letter-spacing:1px;">Información</h4>
+        <p style="margin-bottom:.5rem;">Sociedad Limitada (S.L.)</p>
+        <p style="margin-bottom:.5rem;">Sistema de Preventas</p>
+        <p>© 2026 Quupii S.L.</p>
       </div>
     </div>
   </footer>
