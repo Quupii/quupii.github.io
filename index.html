@@ -7,171 +7,30 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Rammetto+One&display=swap" rel="stylesheet">
-  <style>
-    /* ── Reset & base ─────────────────────────────── */
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
-    body {
-      font-family: 'Rammetto One', cursive;
-      background: #f6b26b; /* Fondo principal naranja */
-      color: #fff;        /* Texto principal blanco */
-    }
-    a { text-decoration: none; color: inherit; }
-
-    /* ── Variables ────────────────────────────────── */
-    :root {
-      --orange:       #f6b26b;    /* Color base */
-      --white:        #ffffff;
-      --orange-dark:  #e69138;
-      --orange-deep:  #d0802d;
-      --dark-text:    #5a3e1a;
-      --border-light: rgba(255, 255, 255, 0.3);
-      --border-orange: #eecbad;
-      --radius:       16px;
-    }
-
-    /* ── Header / Navbar (INVERTIDO) ──────────────── */
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      background: var(--white); /* Fondo Blanco */
-      border-bottom: 2px solid var(--border-orange);
-    }
-    .navbar {
-      max-width: 1200px;
-      margin: 0 auto;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: .9rem 1.5rem;
-    }
-    nav {
-      display: flex;
-      gap: 1.8rem;
-      font-weight: 700;
-      font-size: .95rem;
-      color: var(--orange); /* Enlaces Naranja */
-    }
-    nav a:hover { opacity: 0.7; }
-
-    /* Botón del Header invertido respecto al header blanco */
-    header .btn-header {
-      background: var(--orange);
-      color: var(--white);
-      padding: .6rem 1.4rem;
-      font-size: .8rem;
-      border-radius: 30px;
-      font-weight: 800;
-      border: none;
-      cursor: pointer;
-    }
-
-    /* ── Hero (Lobby) ────────────────────────────── */
-    .hero {
-      background: #fce5cd;
-      padding: 6rem 1.5rem;
-      text-align: center;
-      border-bottom: 1px solid var(--border-light);
-    }
-    .hero h1 {
-      font-size: clamp(2rem, 5vw, 3.5rem);
-      font-weight: 800;
-      color: #f6b26b;
-      margin-bottom: 1rem;
-    }
-    .hero h1 em { color: var(--dark-text); font-style: normal; text-shadow: 0 2px 4px rgba(0,0,0,0.1); }
-    .hero p { max-width: 600px; margin: 0 auto 2rem; color: #5a3e1a; font-size: 1.1rem; }
-
-    /* ── Sections ─────────────────────────────────── */
-    section { padding: 4rem 1.5rem; }
-    .section-inner { max-width: 1200px; margin: 0 auto; }
-    .section-title { text-align: center; font-size: 2rem; font-weight: 800; margin-bottom: 2.5rem; color: var(--white); }
-    .section-title span { color: var(--dark-text); }
-
-    /* ── Character Cards (Staff) ──────────────────── */
-    .staff-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 2rem;
-    }
-    .staff-card {
-      background: var(--white);
-      border-radius: var(--radius);
-      padding: 2rem;
-      text-align: center;
-      transition: transform .2s;
-      box-shadow: 0 8px 24px rgba(0,0,0,0.1);
-    }
-    .staff-card:hover { transform: translateY(-5px); }
-    .staff-emoji { font-size: 4rem; margin-bottom: 1rem; }
-    .staff-name { font-weight: 800; font-size: 1.3rem; color: var(--orange); }
-    .staff-role { color: #888; font-weight: 700; font-size: .85rem; text-transform: uppercase; margin-bottom: .8rem; opacity: 0.6; }
-    .staff-desc { font-size: .95rem; color: var(--dark-text); line-height: 1.5; }
-
-    /* ── Season Sets ──────────────────────────────── */
-    .season-row {
-      display: flex;
-      gap: 1rem;
-      overflow-x: auto;
-      padding: 1rem 0;
-    }
-    .season-badge {
-      flex: 0 0 auto;
-      background: rgba(255, 255, 255, 0.2);
-      padding: .8rem 1.5rem;
-      border-radius: 30px;
-      font-weight: 700;
-      border: 2px solid var(--white);
-      color: var(--white);
-    }
-
-    /* ── App Promo ────────────────────────────────── */
-    .app-section {
-      background: var(--white);
-      color: var(--orange);
-      border-radius: var(--radius);
-      padding: 3.5rem;
-      display: flex;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 2rem;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-    }
-    .app-content { flex: 1; min-width: 300px; }
-    .app-img { font-size: 8rem; flex: 0; filter: drop-shadow(0 5px 15px rgba(0,0,0,0.1)); }
-
-    /* ── Buttons ──────────────────────────────────── */
-    .btn-main {
-      background: var(--white);
-      color: var(--orange);
-      padding: .8rem 2.2rem;
-      border-radius: 30px;
-      font-weight: 800;
-      border: none;
-      cursor: pointer;
-      transition: background 0.3s;
-    }
-    .btn-main:hover { background: #fdfdfd; transform: scale(1.02); }
-
-    footer { background: var(--orange-dark); padding: 4rem 1.5rem; border-top: 1px solid var(--border-light); color: var(--white); }
-  </style>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <header>
     <div class="navbar">
-      <nav>
+      <div class="menu-toggle" id="mobile-menu">
+        <span></span><span></span><span></span>
+      </div>
+
+      <nav id="nav-links">
         <a href="#staff">Nuestro Staff</a>
         <a href="#temporadas">Temporadas</a>
-        <a href="#preventa">Preventas</a>
         <a href="#app">La App</a>
+        <a href="#nosotros">Nosotros</a>
       </nav>
       <button class="btn-header">Hacer Reserva</button>
     </div>
   </header>
 
   <section class="hero">
-    <h1>Quupii Hotel</h1>
+    <h1>
+      <img src="quupii_logo_o.png" alt="Q" class="logo-q" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0iI2Y2YjI2YiI+PHBhdGggZD0iTTEyIDJhMTAgMTAgMCAxIDAgOC4xOCA0LjI3bDIuNDQtMi40N0ExMiAxMiAwIDEgMSAyIDEyIDEyIDEyIDAgMCAxIDEyIDJaIi8+PC9zdmc+'">
+      uupii Hotel
+    </h1>
     <p>Somos un equipo de artesanos informáticos creando un universo de compañía y suavidad artesanal. Reserva tu compañero ideal en nuestro lobby digital.</p>
     <div style="display:flex; justify-content:center; gap:1rem; flex-wrap:wrap;">
       <button class="btn-main">Ver Huéspedes 🐾</button>
@@ -224,7 +83,7 @@
         <div class="season-badge">🎃 Halloween</div>
         <div class="season-badge">🎄 Navidad</div>
       </div>
-      <div style="text-align:center; font-size:1.5rem;">Y más...</div>
+      <div style="text-align:center; font-size:1.5rem; margin-top: 1rem;">Y más...</div>
     </div>
   </section>
 
@@ -237,20 +96,27 @@
           <p style="margin-bottom:2rem; line-height:1.6; font-size:1.1rem;">
             Nuestra App estilo <strong>Tamagotchi</strong> te permite cuidar a tus huéspedes digitalmente y acceder a la tienda de preventas sin anuncios.
           </p>
-          <button class="btn-main" style="background:var(--orange); color:var(--white);">Ver adelanto de la App</button>
+          <button class="btn-main" style="background:var(--orange); color:var(--white);">Próximamente en la App Store</button>
         </div>
       </div>
     </div>
   </section>
 
   <section id="nosotros">
-    <div class="section-inner" style="max-width:800px; text-align:center;">
+    <div class="section-inner" style="max-width:900px; text-align:center;">
       <h2 class="section-title">Hecho a mano, <span>con cariño y amor</span></h2>
-      <p style="line-height:1.8; color:#fff;">
+      <p style="line-height:1.8; color:#fff; margin-bottom: 2rem;">
         Quupii Hotel nació de un equipo de 4 informáticos apasionados por la costura artesanal. 
         Creemos en la producción bajo estándares de <strong>comercio justo</strong> y materiales sostenibles. 
         Cada peluche es único, diseñado para saltar de la mesa de dibujo a tus brazos.
       </p>
+      
+      <div class="nosotros-grid">
+        <img src="quupii_team_d.png" alt="Proceso artesanal" onerror="this.src='https://via.placeholder.com/400x300?text=Proceso+1'">
+        <img src="quupii_team_i.png" alt="Costura" onerror="this.src='https://via.placeholder.com/400x300?text=Proceso+2'">
+        <img src="quupii_team_e.png" alt="Materiales" onerror="this.src='https://via.placeholder.com/400x300?text=Proceso+3'">
+        <img src="quupii_team_j.png" alt="Equipo" onerror="this.src='https://via.placeholder.com/400x300?text=Proceso+4'">
+      </div>
     </div>
   </section>
 
@@ -271,5 +137,6 @@
     </div>
   </footer>
 
+  <script src="script.js"></script>
 </body>
 </html>

@@ -1,0 +1,196 @@
+/* ── Reset & base ─────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Rammetto One', cursive;
+  background: #f6b26b; 
+  color: #fff;        
+}
+a { text-decoration: none; color: inherit; }
+
+:root {
+  --orange:       #f6b26b;    
+  --white:        #ffffff;
+  --orange-dark:  #e69138;
+  --orange-deep:  #d0802d;
+  --dark-text:    #5a3e1a;
+  --border-light: rgba(255, 255, 255, 0.3);
+  --border-orange: #eecbad;
+  --radius:       16px;
+}
+
+header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--white); 
+  border-bottom: 2px solid var(--border-orange);
+}
+.navbar {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: .9rem 1.5rem;
+}
+nav {
+  display: flex;
+  gap: 1.8rem;
+  font-weight: 700;
+  font-size: .95rem;
+  color: var(--orange); 
+}
+nav a:hover { opacity: 0.7; }
+
+header .btn-header {
+  background: var(--orange);
+  color: var(--white);
+  padding: .6rem 1.4rem;
+  font-size: .8rem;
+  border-radius: 30px;
+  font-weight: 800;
+  border: none;
+  cursor: pointer;
+}
+
+.hero {
+  background: #fce5cd;
+  padding: 6rem 1.5rem;
+  text-align: center;
+  border-bottom: 1px solid var(--border-light);
+}
+.hero h1 {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 800;
+  color: #f6b26b;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+.logo-q {
+  height: 1.2em;
+  width: auto;
+  vertical-align: middle;
+}
+
+.hero h1 em { color: var(--dark-text); font-style: normal; text-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+.hero p { max-width: 600px; margin: 0 auto 2rem; color: #5a3e1a; font-size: 1.1rem; }
+
+section { padding: 4rem 1.5rem; }
+.section-inner { max-width: 1200px; margin: 0 auto; }
+.section-title { text-align: center; font-size: 2rem; font-weight: 800; margin-bottom: 2.5rem; color: var(--white); }
+.section-title span { color: var(--dark-text); }
+
+.staff-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+}
+.staff-card {
+  background: var(--white);
+  border-radius: var(--radius);
+  padding: 2rem;
+  text-align: center;
+  transition: transform .2s;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+}
+.staff-card:hover { transform: translateY(-5px); }
+.staff-emoji { font-size: 4rem; margin-bottom: 1rem; }
+.staff-name { font-weight: 800; font-size: 1.3rem; color: var(--orange); }
+.staff-role { color: #888; font-weight: 700; font-size: .85rem; text-transform: uppercase; margin-bottom: .8rem; opacity: 0.6; }
+.staff-desc { font-size: .95rem; color: var(--dark-text); line-height: 1.5; }
+
+.season-row {
+  display: flex;
+  gap: 1rem;
+  overflow-x: auto;
+  padding: 1rem 0;
+}
+.season-badge {
+  flex: 0 0 auto;
+  background: rgba(255, 255, 255, 0.2);
+  padding: .8rem 1.5rem;
+  border-radius: 30px;
+  font-weight: 700;
+  border: 2px solid var(--white);
+  color: var(--white);
+}
+
+.app-section {
+  background: var(--white);
+  color: var(--orange);
+  border-radius: var(--radius);
+  padding: 3.5rem;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 2rem;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+}
+.app-content { flex: 1; min-width: 300px; }
+.app-img { font-size: 8rem; flex: 0; filter: drop-shadow(0 5px 15px rgba(0,0,0,0.1)); }
+
+.btn-main {
+  background: var(--white);
+  color: var(--orange);
+  padding: .8rem 2.2rem;
+  border-radius: 30px;
+  font-weight: 800;
+  border: none;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.btn-main:hover { background: #fdfdfd; transform: scale(1.02); }
+
+footer { background: var(--orange-dark); padding: 4rem 1.5rem; border-top: 1px solid var(--border-light); color: var(--white); }
+
+/* ── NUEVOS ESTILOS: Nosotros & Responsividad ── */
+.nosotros-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+.nosotros-grid img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  border-radius: var(--radius);
+  border: 4px solid var(--white);
+}
+
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+}
+.menu-toggle span {
+  width: 25px;
+  height: 3px;
+  background: var(--orange);
+  border-radius: 2px;
+}
+
+@media (max-width: 768px) {
+  .menu-toggle { display: flex; }
+  nav {
+    display: none; 
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: var(--white);
+    flex-direction: column;
+    padding: 2rem;
+    gap: 1.5rem;
+    text-align: center;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+  }
+  nav.active { display: flex; }
+  .app-section { padding: 2rem; text-align: center; }
+  .app-img { font-size: 5rem; margin: 0 auto; }
+}
