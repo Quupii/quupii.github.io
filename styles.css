@@ -5,6 +5,10 @@ body {
   font-family: 'Rammetto One', cursive;
   background: #f6b26b; 
   color: #fff;        
+
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 a { text-decoration: none; color: inherit; }
 
@@ -17,6 +21,10 @@ a { text-decoration: none; color: inherit; }
   --border-light: rgba(255, 255, 255, 0.3);
   --border-orange: #eecbad;
   --radius:       16px;
+}
+
+section {
+  flex: 1; /* Esto hace que la sección crezca y ocupe todo el espacio sobrante */
 }
 
 header {
@@ -87,19 +95,65 @@ section { padding: 4rem 1.5rem; }
 
 .staff-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(250px, 300px)); /* Forzamos un ancho máximo de 300px por tarjeta */
   gap: 2rem;
+  justify-content: center; /* Centra las tarjetas si hay pocas */
 }
+
 .staff-card {
   background: var(--white);
   border-radius: var(--radius);
   padding: 2rem;
   text-align: center;
-  transition: transform .2s;
+  transition: transform .3s ease;
   box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
-.staff-card:hover { transform: translateY(-5px); }
-.staff-emoji { font-size: 4rem; margin-bottom: 1rem; }
+/* Contenedor de la imagen para asegurar que todo esté centrado */
+.staff-img-container {
+  position: relative;
+  width: 130px; /* Ancho del área */
+  height: 130px; /* Altura del área */
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: flex-end; /* Alinea la imagen a la base del círculo */
+  justify-content: center;
+}
+
+/* Este es el círculo de fondo */
+.staff-img-container::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  width: 120px;
+  height: 120px;
+  background: #fce5cd;
+  border: 4px solid var(--orange-dark);
+  border-radius: 50%;
+  z-index: 1;
+}
+
+.staff-img {
+  position: relative;
+  z-index: 2; /* Por encima del círculo */
+  width: auto;
+  height: 150px; /* Más alta que el círculo para que sobresalga */
+  object-fit: contain;
+  transition: transform 0.3s ease;
+  filter: drop-shadow(0 5px 10px rgba(0,0,0,0.1));
+}
+
+/* Animación opcional: el personaje salta un poco al pasar el ratón */
+.staff-card:hover .staff-img {
+  transform: scale(1.1) translateY(-15px);
+}
+
+.staff-card:hover {
+  transform: translateY(-5px);
+}
+
 .staff-name { font-weight: 800; font-size: 1.3rem; color: var(--orange); }
 .staff-role { color: #888; font-weight: 700; font-size: .85rem; text-transform: uppercase; margin-bottom: .8rem; opacity: 0.6; }
 .staff-desc { font-size: .95rem; color: var(--dark-text); line-height: 1.5; }
@@ -145,6 +199,20 @@ section { padding: 4rem 1.5rem; }
   transition: 0.3s;
 }
 .btn-main:hover { background: #fdfdfd; transform: scale(1.02); }
+
+.btn-main, .btn-header {
+  /* 1. Obliga al botón a usar tu tipografía */
+  font-family: inherit; 
+  font-weight: 40;
+  
+  /* 2. Asegura que el enlace se comporte como un bloque para respetar el padding */
+  display: inline-block; 
+  
+  /* 3. Quita decoraciones por si acaso */
+  text-decoration: none;
+  vertical-align: middle;
+  cursor: pointer;
+}
 
 footer { background: var(--orange-dark); padding: 4rem 1.5rem; border-top: 1px solid var(--border-light); color: var(--white); }
 
